@@ -1,12 +1,12 @@
-"""
-1. Сохранять контакты с именами, адресами, номерами телефонов, email и днями рождения в книгу контактов.
-"""
-
 from collections import UserDict
 from datetime import date, datetime, timedelta
 import pickle
 import re
 from typing import List
+
+"""
+1. Сохранять контакты с именами, адресами, номерами телефонов, email и днями рождения в книгу контактов.
+"""
 
 
 class Field:
@@ -210,8 +210,6 @@ CONTACT_BOOK = AddressBook()
 """
 3. Проверять правильность введенного номера телефона и email во время создания или редактирования записи и уведомлять пользователя в случае некорректного ввода.
 """
-import re
-
 class Field:
    
     def __init__(self, value):
