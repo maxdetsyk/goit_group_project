@@ -1,12 +1,9 @@
-from datetime import date, timedelta
-
-
 """
 1. Сохранять контакты с именами, адресами, номерами телефонов, email и днями рождения в книгу контактов.
 """
 
 from collections import UserDict
-import datetime
+from datetime import date, datetime, timedelta
 import pickle
 import re
 from typing import List
