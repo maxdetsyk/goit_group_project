@@ -10,7 +10,6 @@ from typing import List
 
 
 class Field:
-
     def __intit__(self, value) -> None:
         self.__value = value
 
@@ -28,7 +27,6 @@ class Name(Field):
 
 
 class Phone(Field):
-
     def __init__(self, value) -> None:
         super().__init__(value)
         self.value = value
@@ -46,10 +44,8 @@ class Phone(Field):
 
 
 class Birthday:
-
     def __init__(self, value):
-        self.__value = datetime.strptime(
-            re.sub("[- //]", ".", value), "%d.%m.%Y")
+        self.__value = datetime.strptime(re.sub("[- //]", ".", value), "%d.%m.%Y")
 
     def __repr__(self):
         return f"{self.__value}"
@@ -64,7 +60,6 @@ class Birthday:
 
 
 class Email:
-
     def __init__(self, value):
         self.__value = value
 
@@ -78,7 +73,6 @@ class Email:
 
 
 class Address:
-
     def __init__(self, value):
         self.__value = value
 
@@ -92,13 +86,14 @@ class Address:
 
 
 class Record:
-
-    def __init__(self,
-                 name: Name,
-                 phone: List[Phone],
-                 birthday: Birthday,
-                 email: Email,
-                 address: Address) -> None:
+    def __init__(
+        self,
+        name: Name,
+        phone: List[Phone],
+        birthday: Birthday,
+        email: Email,
+        address: Address,
+    ) -> None:
         self.name = name
         if phone is None:
             self.phone = []
@@ -121,7 +116,6 @@ class Record:
 
 
 class AddressBookIterator:
-
     def __init__(self, data, count_records) -> None:
         self.data = data
         self.curr_index = 0
@@ -132,8 +126,11 @@ class AddressBookIterator:
 
     def __next__(self):
         if self.curr_index < len(self.data):
-            to_show = list(self.data.items())[self.curr_index:min(
-                len(self.data), self.curr_index + self.number_of_records)]
+            to_show = list(self.data.items())[
+                self.curr_index : min(
+                    len(self.data), self.curr_index + self.number_of_records
+                )
+            ]
             self.curr_index += self.number_of_records
             return to_show
         else:
@@ -141,7 +138,6 @@ class AddressBookIterator:
 
 
 class AddressBook(UserDict):
-
     def __init__(self):
         UserDict.__init__(self)
 
@@ -161,12 +157,12 @@ class AddressBook(UserDict):
         return AddressBookIterator(self.data, count_records)
 
     def save(self):
-        with open('data.json', 'bw') as file:
+        with open("data.json", "bw") as file:
             pickle.dump(self.data, file)
 
     def load(self):
         try:
-            with open('data.json', 'br') as file:
+            with open("data.json", "br") as file:
                 self.data = pickle.load(file)
         except:
             pass
@@ -187,6 +183,15 @@ CONTACT_BOOK = AddressBook()
 """
 4. Совершать поиск по контактам из книги контактов.
 """
+
+
+class Asisstant:
+    def __init__(self):
+        self.address_book = AddressBook()
+
+    def find_contact(self, name):
+        result = self.address_book.find_record(name)
+        print(result)
 
 
 """
