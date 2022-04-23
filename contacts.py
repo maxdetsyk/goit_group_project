@@ -94,24 +94,61 @@ class Address:
 class Record:
 
     def __init__(self,
-                 name: Name,
-                 phone: List[Phone],
+                 name: Name,                 
                  birthday: Birthday,
                  email: Email,
-                 address: Address) -> None:
+                 address: Address,
+                 *args) -> None:
         self.name = name
-        if phone is None:
-            self.phone = []
-        else:
-            self.phone = phone
-        self.birthday = birthday
-        self.email = email
-        self.address = address
+        self.phones =[]        
+        self.birthday = ''
+        self.email = ''
+        self.address = ''
+        for item in args:
+            if isinstance(item, Phone):
+                self.phones.append(item)
+        if isinstance(birthday,Birthday):
+            self.birthday = birthday
+        if isinstance(email,Email):
+            self.email = email
+        if isinstance(address,Address):
+            self.address = address    
+        
 
-    def add_phone(self, phone):
-        if phone not in self.phone:
-            self.phone.append(phone)
+    def add_phone(self, phone_number:str) -> list:
+        phone = Phone(phone_number)
+        if phone not in self.phones:
+            self.phones.append(phone)
+            
+    #changing phone in record with 2 string arguments in method
+            
+    def change_phone(self,phone_arg:str, replace_phone_arg:str):
+        count = 0
+        for i in range(len(self.phones)):
+            if phone_arg == self.phones[i].value:
+                self.phones[i] = Phone(replace_phone_arg)
+                count += 1
+        if count == 0:
+            print(f'No such phone {phone_arg} in a record')        
 
+    def delete_phone(self, phone):
+        
+        for item in self.phone:
+            if phone.value == item.value:
+                new_phones_list = self.phones.remove(item)                
+                return new_phones_list
+            
+        print(f'No such phone number {phone_arg} in record {self.name}')
+
+    def edit_birthday(self, new_birthday):    
+        self.birthday.value = new_birthday
+       
+    def edit_email(self, new_email):
+        self.email.value = new_email
+
+    def edit_address(self, new_address):
+        self.address.value = new_address
+      
     def __repr__(self) -> str:
         return f"Name: {self.name.value}\
                 Phones: {', '.join([str(phone.value) for phone in self.phones])}\
@@ -151,8 +188,13 @@ class AddressBook(UserDict):
     def find_record(self, name: Name) -> Record:
         return self.data.get(name.value)
 
-    def delete_record(self, value: Name):
-        self.data.pop(value.value)
+    '''def delete_record(self, value: Name):
+        self.data.pop(value.value)'''
+    #AddressBook object method gets as an argument Record object
+    def delete_record(self,obj):
+        if isinstance(obj, Record):
+            del self.data[obj.name.value]
+            return self.data    
 
     def __str__(self) -> str:
         return str(self.data)
@@ -189,6 +231,4 @@ CONTACT_BOOK = AddressBook()
 """
 
 
-"""
-5. Редактировать и удалять записи из книги контактов.
-"""
+
