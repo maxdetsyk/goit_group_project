@@ -28,18 +28,18 @@ class NoteID:
     def value(self):
         return self.__value
 
-    @id.setter
+    @value.setter
     def value(self, new_id):
         self.__value = new_id
 
 
 class RecordNote:
-    def __init__(self, id: NoteID, note: Note):
-        self.id = id
+    def __init__(self, number: NoteID, note: Note):
+        self.number = number
         self.note = note
 
-    def add_note(self, id, note):
-        note_dict = {id: note}
+    def add_note(self, number, note):
+        note_dict = {number: note}
         return note_dict
 
 
@@ -48,7 +48,7 @@ class NoteBook(UserList):
         UserList.__init__(self)
 
     def add_record(self, recordNote: RecordNote):
-        self.data[recordNote.id.value] = recordNote
+        self.data[recordNote.number.value] = recordNote
 
     def save(self):
         with open('data.json', 'bw') as file:
