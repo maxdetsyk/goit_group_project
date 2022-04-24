@@ -19,6 +19,7 @@ class Note:
         self.__value = new_note
 
 
+
 class NoteID:
 
     def __init__(self, value) -> None:
