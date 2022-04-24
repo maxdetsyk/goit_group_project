@@ -38,6 +38,7 @@ class RecordNote:
     def __init__(self, number: NoteID, note: Note):
         self.number = number
         self.note = note
+        self.note_dict = {self.number: self.note}
 
     def add_note(self, number, note):
         note_dict = {number: note}
