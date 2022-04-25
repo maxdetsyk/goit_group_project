@@ -362,7 +362,7 @@ TRANS = {}
 
 
 for l, s in zip(CYRILLIC_SYMBOLS, LATIN_SYMBOLS):
-    TRANS[ord(s)] = l
+    TRANS[ord(l)] = s
 
 
 def normalize_names(file_name):
