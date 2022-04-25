@@ -4,7 +4,6 @@ import os
 import pickle
 from struct import unpack
 import sys
-import shutil
 import re
 from typing import List
 
@@ -338,9 +337,6 @@ def add_email(self, email):
 4. Совершать поиск по контактам из книги контактов.
 """
 
-class Asisstant:
-    def __init__(self):
-        self.address_book = AddressBook()
 
     def find_contact(self, name):
         result = self.address_book.find_record(name)
@@ -349,6 +345,9 @@ class Asisstant:
 """
 Sorting
 """
+class Sorting:
+    def __init__(self, path):
+        self.path = path
 
 folders_dict = {'images': ('.JPEG', '.PNG', '.JPG', '.SVG'),
           'documents': ('.DOC', '.DOCX', '.TXT', '.PDF', '.XLSX', '.PPTX'),
@@ -395,20 +394,11 @@ def sort_files(file_list, path):
             print(f'Unknown: {file_name}')
 
 
-def unpack_arc(path):
-    list_arch = os.listdir(os.path.join(path, "archives"))
-    for arch in list_arch:
-        file_name, file_ext = os.path.splitext(arch)
-        if os.path.isfile(os.path.join(path, "archives", arch)) and (file_ext.upper() in folders_dict.get('archives')):
-            shutil.unpack_archive(os.path.join(
-                path, "archives", arch), os.path.join(path, "archives", os.path.splitext(arch)[0]))
-
 
 def make_list_files(path):
     os.listdir(path)
     create_folders(path)
     sort_files(os.listdir(path), path)
-    unpack_arc(path)
 
 
 try:
