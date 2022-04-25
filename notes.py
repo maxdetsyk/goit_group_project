@@ -43,6 +43,43 @@ class RecordNote:
         note_dict = {number: note}
         return note_dict
 
+"""
+8. Редактировать и удалять заметки
+"""
+    def del_note(self, number_arg: str):
+        """Method to delete note by number"""
+        try:
+            number_arg = int(number_arg)
+        except ValueError:
+            print(f"Wrong input must be an integer")
+        del_note_flag = None 
+        for note in self.data:
+            for key in note.note_dict.keys():
+                if number_arg == note.note_dict(key):
+                    del_note_flag = note
+        if del_note_flag:
+            self.data.remove(note)
+        else:
+            print('No note with this number')
+            
+
+    def change_note(self, number_arg: str, new_note: str):
+        """Method searches for a note by number and changes its text"""
+        try:
+            number_arg = int(number_arg)
+        except ValueError:
+            print("Wrong input must be an integer")
+        for note in self.data:
+            for key in note.note_dict.keys():
+                if number_arg == note.note_dict(key):
+                    del_note_flag = note
+        if del_note_flag:
+            self.data.remove(note)
+            self.data.append({RecordNote(NoteID(number_arg),Note(new_note))}) 
+        else:
+            print("No note with this number if u wanna add print another command")
+
+
 
 class NoteBook(UserList):
     def __init__(self):
@@ -63,30 +100,5 @@ class NoteBook(UserList):
             pass
 
 
-"""
-8. Редактировать и удалять заметки
-"""
-def del_note(self, number: int):
-    """Method to delete note by number"""
-    try:
-        number = int(number)
-    except ValueError as e:
-        print(f"Wrong input: {e}, must be an integer")
-    del_note = None
-    for note in self.data:
-        if number == note.number:
-            del_note = self.data.pop(number)  # or pop(number-1)?
-            print(f"Note number:{number} was deleted")
-        else:
-            print(f"Numder:{number} is not valide")
 
 
-def change_note(self, number: str, new_note: str):
-    """Method searches for a note by number and changes its text"""
-    try:
-        number = int(number)
-    except ValueError as e:
-        print(f"Wrong input: {e}, must be an integer")
-    for note in self.data:
-        if number == note.number:
-            note.text = new_note
