@@ -42,9 +42,27 @@ class RecordNote:
     def add_note(self, number, note):
         note_dict = {number: note}
         return note_dict
-      
-      
-      
+    
+    
+class NoteBook(UserList):
+    def __init__(self):
+        UserList.__init__(self)
+
+    def add_record(self, recordNote: RecordNote):
+        self.data[recordNote.number.value] = recordNote
+
+    def save(self):
+        with open('data.json', 'bw') as file:
+            pickle.dump(self.data, file)
+
+    def load(self):
+        try:
+            with open('data.json', 'br') as file:
+                self.data = pickle.load(file)
+        except:
+            pass
+
+        
 '''
 7. Проводить поиск по заметкам.
 '''
@@ -94,26 +112,4 @@ def find_note(self, subtext: str) -> list:
             self.data.append({RecordNote(NoteID(number_arg),Note(new_note))}) 
         else:
             print("No note with this number if u wanna add print another command")
-
-
-
-class NoteBook(UserList):
-    def __init__(self):
-        UserList.__init__(self)
-
-    def add_record(self, recordNote: RecordNote):
-        self.data[recordNote.number.value] = recordNote
-
-    def save(self):
-        with open('data.json', 'bw') as file:
-            pickle.dump(self.data, file)
-
-    def load(self):
-        try:
-            with open('data.json', 'br') as file:
-                self.data = pickle.load(file)
-        except:
-            pass
-
-
 
