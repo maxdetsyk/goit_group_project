@@ -1,6 +1,5 @@
 from collections import UserDict
 from datetime import date, datetime, timedelta
-import os
 import pickle
 from struct import unpack
 import sys
@@ -406,6 +405,3 @@ try:
     make_list_files(ps_2)
 except IndexError as e:
     print(e)
-
-
-
