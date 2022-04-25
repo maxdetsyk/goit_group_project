@@ -42,6 +42,22 @@ class RecordNote:
     def add_note(self, number, note):
         note_dict = {number: note}
         return note_dict
+      
+      
+      
+'''
+7. Проводить поиск по заметкам.
+'''
+def find_note(self, subtext: str) -> list:
+    """Method to find notes by text or ID"""
+    subtext = subtext.lower()
+    notes_list = []
+    for note in self.data:
+
+        if subtext in note.text.lower() or subtext == str(note.number):
+            notes_list.append(note)
+    return list(set(notes_list)) if notes_list else [f'{subtext} not found in notes.']
+
 
 """
 8. Редактировать и удалять заметки
@@ -98,7 +114,6 @@ class NoteBook(UserList):
                 self.data = pickle.load(file)
         except:
             pass
-
 
 
 
