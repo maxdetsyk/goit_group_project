@@ -1,5 +1,6 @@
 from collections import UserDict
 from datetime import date, datetime, timedelta
+import os
 import pickle
 import re
 from typing import List
@@ -198,17 +199,30 @@ class AddressBook(UserDict):
     def iterator(self, count_records) -> AddressBookIterator:
         return AddressBookIterator(self.data, count_records)
 
-    def save(self):
-        with open("data.json", "bw") as file:
-            pickle.dump(self.data, file)
+    def save_contacts(self) -> None:
+        folder_sep = "\\" 
 
-    def load(self):
-        try:
-            with open("data.json", "br") as file:
+        fellow_folder = os.environ["HOMEPATH"] + folder_sep + "fellow"
+
+        if os.path.exists(fellow_folder):
+            with open(fellow_folder + folder_sep + "contacts.bin", "wb") as file:
+                pickle.dump(self.data, file)
+        else:
+            os.mkdir(fellow_folder)
+            with open(fellow_folder + folder_sep + "contacts.bin", "wb") as file:
+                pickle.dump(self.data, file)
+
+    def load_contacts(self) -> None:
+
+        folder_sep = "\\"
+
+        fellow_notes = (
+            os.environ["HOMEPATH"] + folder_sep + "fellow" + folder_sep + "contacts.bin"
+        )
+
+        if os.path.exists(fellow_notes):
+            with open(fellow_notes, "rb") as file:
                 self.data = pickle.load(file)
-        except:
-            pass
-
 
 CONTACT_BOOK = AddressBook()
 
@@ -252,6 +266,7 @@ CONTACT_BOOK = AddressBook()
 """
 3. Проверять правильность введенного номера телефона и email во время создания или редактирования записи и уведомлять пользователя в случае некорректного ввода.
 """
+
 class Field:
    
     def __init__(self, value):
