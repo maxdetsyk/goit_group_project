@@ -2,6 +2,7 @@
 6. Сохранять заметки с текстовой информацией
 """
 from collections import UserList
+import os
 import pickle
 
 
@@ -51,16 +52,31 @@ class NoteBook(UserList):
     def add_record(self, recordNote: RecordNote):
         self.data[recordNote.number.value] = recordNote
 
-    def save(self):
-        with open('data.json', 'bw') as file:
-            pickle.dump(self.data, file)
+    
+    def save_notes(self) -> None:
+        folder_sep = "\\" 
 
-    def load(self):
-        try:
-            with open('data.json', 'br') as file:
+        fellow_folder = os.environ["HOMEPATH"] + folder_sep + "fellow"
+
+        if os.path.exists(fellow_folder):
+            with open(fellow_folder + folder_sep + "notes.bin", "wb") as file:
+                pickle.dump(self.data, file)
+        else:
+            os.mkdir(fellow_folder)
+            with open(fellow_folder + folder_sep + "notes.bin", "wb") as file:
+                pickle.dump(self.data, file)
+
+    def load_notes(self) -> None:
+
+        folder_sep = "\\"
+
+        fellow_notes = (
+            os.environ["HOMEPATH"] + folder_sep + "fellow" + folder_sep + "notes.bin"
+        )
+
+        if os.path.exists(fellow_notes):
+            with open(fellow_notes, "rb") as file:
                 self.data = pickle.load(file)
-        except:
-            pass
 
         
 '''
