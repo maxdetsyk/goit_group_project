@@ -64,6 +64,7 @@ def timeout_decor(func):
                                'Thats all? Oh well...Ttyl...',
                                'Oh no, we just started((...Bye then...']
             print(random.choice(bye_answer_list))
+            time.sleep(5)
 
             answer = None
 
@@ -199,7 +200,7 @@ Press "3" to sort some folder')
             
 
 
-        time.sleep(10)
+        time.sleep(5)
         print('----------------------------')
         print('If you finished say the magic word)))...\n\nIf you want to keep hanging out, let\'s choose the chapter...\n\nPress "1" for Address Book\nPress "2" for Notebook\n\
 Press "3" to sort some folder')
