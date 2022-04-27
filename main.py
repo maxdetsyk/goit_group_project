@@ -2,14 +2,14 @@ from difflib import get_close_matches
 import time
 import random
 '''from goit_group_project.contacts import *
-from goit_group_project.notes import *
-from goit_group_project.sorting import *'''
+from goit_group_project.notes import *'''
+from sorting import *
 
 
 chapters_dict = {
     '1': 'AddressBook',
     '2': 'NoteBook',
-    '3': 'cleaning'}
+    '3': cleaning}
 
 bye_commands_list = ["bye", "good bye", "close", "exit", "."]
 
@@ -140,10 +140,10 @@ Press "3" to sort some folder')
 
             if chapter_select == '3':
                 operating_object = chapters_dict.get(chapter_select)
-                #operating_object()
-                print(operating_object)#result_func = operating_object()
-                #if result_func:
-                print('Folder is sorted....Check it out...')
+                result_func = operating_object()
+                
+                if result_func:
+                    print('Folder is sorted....Check it out...')
 
             if chapter_select in ('1','2'):
                 
@@ -207,10 +207,3 @@ Press "3" to sort some folder')
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
