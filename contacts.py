@@ -277,7 +277,7 @@ class AddressBook(UserDict):
     def iterator(self, count_records) -> AddressBookIterator:
         return AddressBookIterator(self.data, count_records)
 
-    def save_contacts(self) -> None:
+    def save_data(self) -> None:
         folder_sep = "\\"
 
         fellow_folder = os.environ["HOMEPATH"] + folder_sep + "fellow"
@@ -290,7 +290,7 @@ class AddressBook(UserDict):
             with open(fellow_folder + folder_sep + "contacts.bin", "wb") as file:
                 pickle.dump(self.data, file)
 
-    def load_contacts(self) -> None:
+    def load_data(self) -> None:
 
         folder_sep = "\\"
 

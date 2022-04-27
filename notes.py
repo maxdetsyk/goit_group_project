@@ -91,7 +91,7 @@ class NoteBook(UserList):
                 notes_list.append(note)
         return list(set(notes_list)) if notes_list else [f'{subtext} not found in notes.']
 
-    def save_notes(self) -> None:
+    def save_data(self) -> None:
         folder_sep = "\\"
 
         fellow_folder = os.environ["HOMEPATH"] + folder_sep + "fellow"
@@ -104,7 +104,7 @@ class NoteBook(UserList):
             with open(fellow_folder + folder_sep + "notes.bin", "wb") as file:
                 pickle.dump(self.data, file)
 
-    def load_notes(self) -> None:
+    def load_data(self) -> None:
 
         folder_sep = "\\"
 
