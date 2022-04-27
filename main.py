@@ -69,12 +69,13 @@ def timeout_decor(func):
             answer = None
 
 
-        elif time.time() - start >= 20:
+        elif time.time() - start >= 10:
             unpatient_answer_list = ["Sorry, I was waiting for too long...See ya!",
                                      "You forgot bout me...((I\'m out",
                                      "I see u doing your business...It\'s ok, see u soon",
                                      "I left for coffe, too long to wait for ya...U know how to call again if needed))"]
             print(random.choice(unpatient_answer_list))
+            time.sleep(5)
             answer = None
 
         return answer
@@ -200,7 +201,7 @@ Press "3" to sort some folder')
             
 
 
-        time.sleep(5)
+        time.sleep(3)
         print('----------------------------')
         print('If you finished say the magic word)))...\n\nIf you want to keep hanging out, let\'s choose the chapter...\n\nPress "1" for Address Book\nPress "2" for Notebook\n\
 Press "3" to sort some folder')
