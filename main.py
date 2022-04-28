@@ -20,16 +20,17 @@ contacts_commands_list = [
     "add contact\n",
     "show contacts\n",
     "find contact {text}\n",
-    "change record {name}\n",
+    #"change record {name}\n",
     "delete contact {name}\n",
-    "add phone {name}\n",
-    "get birthdays {days_to}\n"]
+    #"add phone {name}\n",
+    #"get birthdays {days_to}\n"
+    ]
 
 notes_command_list = [
     
     "add note\n",
     "show notes\n",
-    "find note {text}\n",
+    #"find note {text}\n",
     "change note\n",
     "delete note {topic}\n"]
 
