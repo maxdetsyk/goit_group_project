@@ -191,13 +191,6 @@ class AddressBook(UserDict):
     def __setstate__(self, value):
         self.__dict__ = value
 
-    def save_to_file(self, file_name):
-        with open(file_name, "wb") as file:
-            pickle.dump(self, file)
-
-    def read_from_file(self, file_name):
-        with open(file_name, "rb") as file:
-            return pickle.load(file)
 
     def search(self, text):
         #result = []
