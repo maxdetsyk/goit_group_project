@@ -2,6 +2,7 @@ from difflib import get_close_matches
 import time
 import random
 from contacts import *
+from notes import *
 from note import *
 from sorting import *
 
@@ -65,7 +66,7 @@ def timeout_decor(func):
                                'Thats all? Oh well...Ttyl...',
                                'Oh no, we just started((...Bye then...']
             print(random.choice(bye_answer_list))
-            time.sleep(5)
+            time.sleep(20)
 
             answer = None
 
@@ -76,7 +77,7 @@ def timeout_decor(func):
                                      "I see u doing your business...It\'s ok, see u soon",
                                      "I left for coffe, too long to wait for ya...U know how to call again if needed))"]
             print(random.choice(unpatient_answer_list))
-            time.sleep(5)
+            time.sleep(2)
             answer = None
 
         return answer
@@ -101,6 +102,7 @@ def options_of_commands(func):
                 a = '" or "'.join(close_matches)
                 print(f'Maybe you meant: "{a}"?  Please try again.\n')
                 continue            
+                
             elif not close_matches:
                 print('Sorry, I don\'t understand you\n')
 
@@ -198,7 +200,7 @@ Press "3" to sort some folder')
             
 
 
-        time.sleep(3)
+        time.sleep(20)
         print('----------------------------')
         print('If you finished say the magic word)))...\n\nIf you want to keep hanging out, let\'s choose the chapter...\n\nPress "1" for Address Book\nPress "2" for Notebook\n\
 Press "3" to sort some folder')
