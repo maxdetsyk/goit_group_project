@@ -1,10 +1,9 @@
 from difflib import get_close_matches
 import time
 import random
-from contacts import *
-from note import *
-from note import *
-from sorting import *
+from fellow.contacts import *
+from fellow.note import *
+from fellow.sorting import *
 
 
 chapters_dict = {
