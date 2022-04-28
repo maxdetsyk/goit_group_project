@@ -2,7 +2,7 @@ from difflib import get_close_matches
 import time
 import random
 from contacts import *
-from notes import *
+from note import *
 from sorting import *
 
 
