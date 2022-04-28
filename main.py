@@ -3,7 +3,6 @@ import time
 import random
 from contacts import *
 from note import *
-from note import *
 from sorting import *
 
 
