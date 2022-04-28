@@ -3,6 +3,7 @@ import time
 import random
 from contacts import *
 from notes import *
+from note import *
 from sorting import *
 
 
@@ -17,42 +18,43 @@ bye_commands_list = ["bye", "good bye", "close", "exit", "."]
 # lists to present for user's information
 
 contacts_commands_list = [
-    "add record\n",
-    "show records\n",
-    "find record {name}\n",
-    "change record {name}\n",
-    "delete record {name}\n",
-    "add phone {name}\n",
-    "get birthdays {days_to}\n"]
+    "add contact\n",
+    "show contacts\n",
+    "find contact {text}\n",
+    #"change record {name}\n",
+    "delete contact {name}\n",
+    #"add phone {name}\n",
+    #"get birthdays {days_to}\n"
+    ]
 
 notes_command_list = [
+    
     "add note\n",
     "show notes\n",
-    "find note {id/text}\n",
-    "change note {id}\n",
-    "delete note {id}\n"]
+    #"find note {text}\n",
+    "change note\n",
+    "delete note {topic}\n"]
 
 # dict of commands with functions to carry
 commands_with_args = {
-    "find record": 'find_record',
+    "find contact": find_contact,
     "add phone": 'add_phone',
     "change record": 'change_record',
-    "delete record": 'del_record',
+    "delete contact": del_contact,
     "get birthdays":  'birthday_in_next_x_days',
-    "sort folder": 'sort_folder',
     "find note": 'find_note',
-    "change note": 'change_note',
-    "delete note": 'del_note'
+    "delete note": delete_note
     }
 commands_without_args = {
-    "add record": 'add_record',
-    "show records": 'show_records',
-    "add note": 'add_note',
-    "show notes": 'show_notes',
+    "add contact": add_contact,
+    "show contacts": show_contacts,
+    "add note": add_note,
+    "show notes": show_notes,
+    "change note": change_note
     }
 
-all_commands_dict = commands_without_args|commands_without_args
-
+commands_without_args.update(commands_with_args)
+all_commands_dict = commands_without_args
 def timeout_decor(func):
     def inner():
         start = time.time()
@@ -88,10 +90,10 @@ def options_of_commands(func):
         while True:
 
             answer = func()
-            parsed_command = list(answer.split(' '))
-            parsed_command = ' '.join(parsed_command[0:2])
-            possibilities = list(all_commands_dict.keys()) + bye_commands_list + ['back']
-                      
+            parsed_command = list(answer.split(' '))            
+            parsed_command = ' '.join(parsed_command[0:2])           
+            possibilities = list(all_commands_dict.keys()) + bye_commands_list + ['back'] 
+            
             close_matches = get_close_matches(
                 parsed_command, possibilities, n=2, cutoff=0.1)
             if parsed_command in chapters_dict.keys() or parsed_command in possibilities:
@@ -162,39 +164,35 @@ Press "3" to sort some folder')
                 print('Or input \'back\' to get back to the Main Menue\n')
                 
                 #operating_obj = chapters_dict.get(chapter_select)()#AddresssBook class or NoteBook class instancing
-                print('here we create class instance')
+                #print('here we create class instance')
+                command_result = False
+                while not command_result:
+                    user_request = user_input()
+                    if user_request == None:
+                        break
                 
-#while not command_result:
-                #operating_obj.load_data()
-                user_request = user_input()
-                if user_request == None:
-                    break
+                    if user_request == 'back':
+                     print('You are in Main Menue...Lets select chapter\nPress "1" for Address Book\nPress "2" for Notebook\n\
+Press "3" to sort some folder')                    
+                     continue
                 
-                if user_request == 'back':
-                    print('You are in Main Menue...Lets select chapter\nPress "1" for Address Book\nPress "2" for Notebook\n\
-Press "3" to sort some folder')
-                    #operating_obj.save_data()
-                    #break
-                    continue
-                
-                listed_user_request = list(user_request.split(' '))
+                    listed_user_request = list(user_request.split(' '))
                 
                 
-                if len(listed_user_request) == 2:
-                    if user_request in commands_without_args.keys():
-                        print(user_request)
-                        #operating_obj.commands_without_args.get(user_request)()
-                    else:
-                        print('I don\'t understand you...Try again')
-                        #operating_obj.save_data()
-                        continue
+                    if len(listed_user_request) == 2:
+                        if user_request in commands_without_args.keys():
+            
+                            command_result = commands_without_args.get(user_request)()
+                        else:
+                            print('I don\'t understand you...Try again')                    
+                            continue
                     
-                elif len(listed_user_request) == 3:
-                    user_command = ' '.join(listed_user_request[0:2])
-                    user_arg = listed_user_request[-1]
-                    '''if user_command in commands_without_args.keys():
-                        #operating_obj.commands_without_args.get(user_command)(user_arg)'''
-                    print(user_arg, user_command)
+                    elif len(listed_user_request) == 3:
+                        user_command = ' '.join(listed_user_request[0:2])
+                        user_arg = listed_user_request[-1]
+                        if user_command in commands_with_args.keys():
+                            command_result = commands_with_args.get(user_command)(user_arg)
+                   
                     '''else:
                         print('Is it omething new?....Never heard, try again!')
                         continue
