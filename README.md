@@ -1,5 +1,5 @@
 # **PERSONAL ASSISTANT "FELLOW"**
-###### goit python group project - group №2
+###### goit python group project - group № 2
 
 ------------
 ##  Опис та інструкція по роботі з асистентом
@@ -15,14 +15,14 @@
 
 #### Встановлення
 
-Для встановлення даного персонального помічника вам потрібні *python 3.6*+ та *pip*.
+Для встановлення даного персонального помічника вам потрібні ***python 3.6+*** та ***pip***.
 
 - Скопіюйте репозиторій на ваш комп'ютер
 - Перейдіть до директорії fellow
 - Запустіть командний рядок (cmd)
 - Пропишіть команду: **`pip install -e .`**
 
-Для запуску вам потрібно прописати команду **` fellow`** в cmd, від імені адміністратора 
+Для запуску, вам потрібно прописати команду **` fellow`** в cmd, від імені адміністратора 
 
 ------------
 
@@ -36,6 +36,8 @@
 | `show contacts`  | показати контакти |
 | `find contact «ім'я контакту»`  | знайти номер телефону контакту |
 | `delete contact «ім'я контакту»` | видалити контакт |
+| `get birthdays` | показ днів народження  |
+| `back` | повернутися у меню|
 |||
 |**Робота з нотатками**||
 | `add note` | додавання нової нотатки |
@@ -44,17 +46,53 @@
 | `delete note «назва нотатки»` | видалення нотатки |
 |||
 |**Сортування файлів**||
-| `sort folder` | сортування вмісту у заданій папці |
+| `sort folder` | сортування файлів у заданій папці |
 ------------
-#### Instruction in English «Fellow»
+‎
+### Instruction in English «Fellow»
+------------
+##  АНГЛ
+
+**«Fellow»** is your personal friend and assistant with a contact book, notes and some additional features.
+
+**«Fellow» can**
+- save, delete and edit contacts in your contact book
+- check your friends' birthdays than a given number of days
+-  save, delete and modify your notes
+-  sort files on your PC by categories
 ------------
 
-«Fellow» is your personal friend and assistant with a contact book, notes and some additional features.
+#### Installing
 
-«Fellow» can: • save, delete and edit contacts in your contact book • check your friends' birthdays than a given number of days • save, delete and modify your notes • organize your folder tree
+To install this personal assistant, you need ***python 3.6+*** and ***pip***.
 
-Installation IMPORTANT! To install this personal assistant you need to install python3 and pip
+- Copy the repository to your computer
+- Go to the fellow directory
+- Run the command prompt (cmd)
+- Write the command: **`pip install -e .`**
 
-• copy the repository to your computer • change directory to my_fellow • type pip install -e . • to run this bot you need to register this command as administrator: python3 my_fellow
+To run, you need to write a command **` fellow`** in the cmd as an administrator
 
-«Fellow» works with the following commands: add add record - adding a new record add phone - adding a new phone add note - add a new note change change record change note - note change delete delete note - delete a note delete record - delete a record get get birthdays - get the number of days until the birthday find find record - search for a record find phone - phone search find note - find a note sort sort folder - sort the contents of a folder show show records - show records show notes - show notes
+------------
+
+###  "Fellow" works with the following commands:
+
+| Command name |  Act |
+| ------------ | ------------ |
+|||
+|**Work with contacts**||
+| `add contact` | add a new contact |
+| `show contacts`  | show contacts |
+| `find contact «ім'я контакту»`  | find contact phone number |
+| `delete contact «ім'я контакту»` | delete contact |
+| `get birthdays` | show birthdays |
+| `back` | back to main menu|
+|||
+|**Work with notes**||
+| `add note` | add a new note |
+| `show notes` | show notes |
+| `change note` | change the note |
+| `delete note «назва нотатки»` | delete a note |
+|||
+|**Sort files**||
+| `sort folder` | sort files in the specified folder |
