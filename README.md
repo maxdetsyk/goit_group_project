@@ -49,9 +49,8 @@
 | `sort folder` | сортування файлів у заданій папці |
 ------------
 ‎
-### Instruction in English «Fellow»
-------------
-##  АНГЛ
+## Instruction in English «Fellow»
+###  Description and instructions
 
 **«Fellow»** is your personal friend and assistant with a contact book, notes and some additional features.
 
@@ -77,7 +76,7 @@ To run, you need to write a command **` fellow`** in the cmd as an administrator
 
 ###  "Fellow" works with the following commands:
 
-| Command name |  Act |
+| Command name |  Acting |
 | ------------ | ------------ |
 |||
 |**Work with contacts**||
