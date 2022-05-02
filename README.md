@@ -49,7 +49,7 @@
 | `sort folder` | сортування файлів у заданій папці |
 ------------
 ‎
-## Description and instructions in English»
+## Description and instructions in English
 
 **«Fellow»** is your personal friend and assistant with a contact book, notes, and some additional features.
 
@@ -69,7 +69,7 @@ To install this personal assistant, you need ***python 3.6+*** and ***pip***.
 - Run the command prompt (cmd)
 - Write the command: **`pip install -e .`**
 
-To run, you should write a command **` fellow`** in the cmd as an administrator
+To run, you should write a command **` fellow`** in the cmd as an administrator.
 
 ------------
 
