@@ -8,7 +8,7 @@
 
 **«Приятель» вміє:**
 - зберігати, видаляти та змінювати контакти у вашій книзі контактів
-- перевіряти дні народження ваших друзів, на задану к-сть днів
+- Перевіряти дні народження ваших контактів у заданому періоді часу
 - створювати, видаляти та змінювати ваші нотатки
 - впорядковувати файли на вашому ПК по категоріям
 ------------
@@ -49,16 +49,15 @@
 | `sort folder` | сортування файлів у заданій папці |
 ------------
 ‎
-## Instruction in English «Fellow»
-###  Description and instructions
+## Description and instructions in English»
 
-**«Fellow»** is your personal friend and assistant with a contact book, notes and some additional features.
+**«Fellow»** is your personal friend and assistant with a contact book, notes, and some additional features.
 
 **«Fellow» can**
 - save, delete and edit contacts in your contact book
-- check your friends' birthdays than a given number of days
--  save, delete and modify your notes
--  sort files on your PC by categories
+- сheck the birthdays of your contacts in the specified time period
+- save, delete and modify your notes
+- sort files on your PC by categories
 ------------
 
 #### Installing
@@ -70,7 +69,7 @@ To install this personal assistant, you need ***python 3.6+*** and ***pip***.
 - Run the command prompt (cmd)
 - Write the command: **`pip install -e .`**
 
-To run, you need to write a command **` fellow`** in the cmd as an administrator
+To run, you should write a command **` fellow`** in the cmd as an administrator
 
 ------------
 
@@ -82,8 +81,8 @@ To run, you need to write a command **` fellow`** in the cmd as an administrator
 |**Work with contacts**||
 | `add contact` | add a new contact |
 | `show contacts`  | show contacts |
-| `find contact «ім'я контакту»`  | find contact phone number |
-| `delete contact «ім'я контакту»` | delete contact |
+| `find contact "сontact name"`  | find contact phone number |
+| `delete contact "сontact name"` | delete contact |
 | `get birthdays` | show birthdays |
 | `back` | back to main menu|
 |||
@@ -91,7 +90,7 @@ To run, you need to write a command **` fellow`** in the cmd as an administrator
 | `add note` | add a new note |
 | `show notes` | show notes |
 | `change note` | change the note |
-| `delete note «назва нотатки»` | delete a note |
+| `delete note "note title"` | delete a note |
 |||
 |**Sort files**||
 | `sort folder` | sort files in the specified folder |
