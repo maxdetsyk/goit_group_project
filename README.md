@@ -34,19 +34,19 @@
 |**Робота з контактами**||
 | `add contact` | додати новий контакт |
 | `show contacts`  | показати контакти |
-| `find contact &laquo;ім&#39;я контакту&raquo;`  | знайти номер телефону контакту |
-| `delete contact &laquo;ім&#39;я контакту&raquo`;  | видалити контакт |
+| `find contact «ім'я контакту»`  | знайти номер телефону контакту |
+| `delete contact «ім'я контакту»` | видалити контакт |
 |||
 |**Робота з нотатками**||
 | `add note` | додавання нової нотатки |
 | `show notes` | показати нотатки |
 | `change note` | зміна нотатки |
-| `delete note &laquo;назва нотатки&raquo;` | видалення нотатки |
+| `delete note «назва нотатки»` | видалення нотатки |
 |||
 |**Сортування файлів**||
 | `sort folder` | сортування вмісту у заданій папці |
 ------------
-### Instruction in English «Fellow»
+#### Instruction in English «Fellow»
 ------------
 
 «Fellow» is your personal friend and assistant with a contact book, notes and some additional features.
